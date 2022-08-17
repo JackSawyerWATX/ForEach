@@ -1,0 +1,108 @@
+				+-~-~-~-~-~-~-~-~-+
+				|==>Collections<==|
+				+~-~-~-~-~-~-~-~-~+
+
+What is a Data Structure?
+You have already worked with a type of object called an array. An array is a data structure or a format for storing, organizing, and managing multiple elements. Other than the array, many different data structures can be used in programming, each with its own way of storing and working with the data.
+
+What is a Collection?
+The Java programming language has an API called the Collections Framework. This set of classes and interfaces allows us to create collections of objects. These collections represent common data structures, and we can use them to store groups of objects of the same data type.
+
+Let’s take a look at what the Collections Framework looks like:
+
+					x----------x
+					| Iterable |
+					x----------x
+						 ^
+					      |
+				    x------------x
+				    | Collection |
+				    x------------x
+						 ^
+						 |
+    	    ---------------------------------------------
+	    ^				 ^				   ^
+	    |				 |				   |
+	x------x			  x-------x			x-----x
+	| List |			  | Queue |			| Set |
+	x------x			  x-------x			x-----x
+	  ^				   ^  ^				 ^  ^
+	  /				   |  /				 |  /
+	  \				   |	 \				 |  \
+	  /  +------------+	   |  +---------------+	 |  /  +---------+
+	  \==| Array List |	   |  | PriorityQueue |   |  \==| HashSet |
+	  /  +------------+	   |  +---------------+   |  /  +---------+
+	  \				   |					 |  \
+	  /                   x-------x			 |  /  +---------+
+       \                   | Deque |			 |  \==| Linked  |
+	  /                   x-------x			 |	  | HashSet |
+	  \		      		 ^				 |	  +---------+
+	  /	  				 \				 |
+	  \	+------------+		 /				 |
+	  /==|LinkedList  |=======\				 |
+       \  +------------+       /				 |
+       /					 \				 |
+       \  +--------+	  +------------+     x-----------x
+       /==| Vector |	  | ArrayDeque |     | SortedSet |
+	     +--------+       +------------+     x-----------x
+			^							  ^
+		     |							  \
+			|							  /
+		+-------+						 +---------+
+		| Stack |						 | TreeSet |
+		+-------+						 +---------+
+
+
+   x-x		   +-+         ^               ^
+   | | Interface  | | Class   \= Impliments   |- Extends
+   x-x		   +-+
+
+Notice that there are rectangles with "x" corners in the diagram. These are interfaces, and their job is to define what behavior an implementing collection needs to have. For this lesson, we’ll look at each interface’s role.
+
+The rectangles with "+" corners in the diagram are collection classes. These classes implement any required behavior defined in the interfaces they implement, and we can create objects from these classes to help us store and manage groups of elements.
+
+What is the Iterable Interface?
+If we start at the top of the diagram, we’ll see the Iterable interface. This interface defines the requirement that a collection needs to have a way to be iterated over or traversed one element at a time. Of course, every collection class has its own way of being iterated through because each collection has a different structure. 
+
+What is the Collection Interface?
+The next rectangle is the Collection interface. This interface defines other general behavior that a collection should have, such as adding elements to the collection, removing elements from the collection, searching for an element within the collection, etc. Every implementing collection class must be able to do these required actions.
+
+What are the different kinds of collections?
+The next level of rectangles in the diagram represents three categories a collection can fall into. A collection can implement the Set interface, the Queue interface, and/or the List interface.
+
+If a collection implements the Set interface, this means that the collection must be unordered and it must not contain duplicate values.
+
+If a collection implements the Queue interface, this means that the collection must be ordered in a particular way, and you can only work with the elements from either the beginning or the end of the collection.
+
+If a collection implements the List interface, this means that the collection must be ordered in a particular way, usually with an index.
+
+The Map interface, and its related interfaces and classes, are another branch of the Collections Framework, although Maps are not collections. Maps contain key-value pairs, and because each pair can consist of two objects of different types, it has its own separate inheritance branch in the Java API. 
+
+There is one more thing we want to discuss before moving on. Collections often use a different type of for loop structure. While you can still use a normal for loop, there is an enhanced for loop also, called a for-each loop. This allows us to iterate through a Collection or Array. 
+
++----------------------------------------------------------------+
+|	for(dataType item : array) {							|
+|		...											|
+|	}												|
++----------------------------------------------------------------+
+
+Keep this in mind when working with Collections. If you see something like the above, it is legal.
+
++----------------------------------------------------------------+
+|													|
+|	// print array elements 								|
+|													|
+|	public class Main {									|
+|		public static void main(String[] args) {			|
+|													|
+|	 	// create an array								|
+|		int[] numbers = {3, 7, 5, 20};					|
+|													|
+|    	// for each loop								|
+|		for (int number: numbers) {						|
+|			System.out.println(number);					|
+|			}										|
+|		}											|
+|	}												|
+|													|
++----------------------------------------------------------------+
